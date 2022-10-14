@@ -1,5 +1,15 @@
 <%- include("./partials/navbar") -%>
 <%- include("./partials/sidebar") -%>
-<h1>Welcome! <%= name %></h1>
+<h1>Welcome!</h1>
+
+<% data.forEach((item, index) => { %>
+<tr>
+    <td><%= item.id %></td>
+    <td><%= item.name %></td>
+    <td><%= item.size %></td>
+    <td><%= item.price %></td>
+    <td><%= item.photo %></td>
+</tr><br/>
+<% }) %>
 
 <%- include("./partials/footer.ejs") -%>

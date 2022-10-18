@@ -1,3 +1,41 @@
 <%- include("./partials/navbar") -%>
 <h1>Halaman Tambah Data Mobil</h1>
+<form>
+    <input type="text" id="name" placeholder="Masukan nama" />
+    <select id="size">
+        <option value="big">big</option>
+        <option value="small">small</option>
+    </select>
+    <input type="number" id="price" placeholder="Masukan Harga" />
+    <input type="text" id="photo" placeholder="Masukan photo"/>
+    <button type="submit" id="btn">Submit</button>
+</form>
+
+<script>
+    const inputName = document.getElementById("name");
+    const inputSize = document.getElementById("size");
+    const inputPrice = document.getElementById("price");
+    const inputPhoto = document.getElementById("photo");
+    const btnSubmit = document.getElementById("btn");
+
+    btnSubmit.addEventListener("click", async (event)=> {
+        event.preventDefault();
+        const dataYangMauDikirim = {
+            name: inputName.value,
+            size: inputSize.value,
+            price: inputPrice.value,
+            photo: inputPhoto.value
+        }
+        const result = await fetch("/api/v1/cars", {
+            method: "POST",
+            headers: {
+                'Content-Type': "application/json"
+            },
+            body: JSON.stringify(dataYangMauDikirim)
+        })
+        console.log(result);
+    })
+
+
+</script>
 <%- include("./partials/footer") -%>
